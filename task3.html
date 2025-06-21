@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task 3 - ApexPlanet (Enhanced)</title>
+  <style>
+    /* Background and Layout */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #004d40;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .section {
+      background-color: #ffffffdd;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #00695c;
+      margin-bottom: 15px;
+    }
+
+    .responsive-box {
+      text-align: center;
+      font-weight: bold;
+      color: #00796b;
+    }
+
+    button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 14px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1976d2;
+    }
+
+    p.result {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 600px) {
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Web Dev Task - 3 : Responsive + JS + API</h1>
+
+  <!-- 1. Responsive Box -->
+  <div class="section responsive-box">
+    <p>This section adapts beautifully to mobile, tablet, and desktop using media queries.</p>
+  </div>
+
+  <!-- 2. Interactive Quiz -->
+  <div class="section">
+    <h2>Interactive Quiz</h2>
+
+    <div>
+      <p>1. What does CSS stand for?</p>
+      <button onclick="checkAnswer(this, 'result1')" data-correct="false">Creative Style Sheets</button>
+      <button onclick="checkAnswer(this, 'result1')" data-correct="false">Computer Style Sheets</button>
+      <button onclick="checkAnswer(this, 'result1')" data-correct="true">Cascading Style Sheets</button>
+      <p id="result1" class="result"></p>
+    </div>
+
+    <div>
+      <p>2. Which tag is used to link JavaScript to HTML?</p>
+      <button onclick="checkAnswer(this, 'result2')" data-correct="true">&lt;script&gt;</button>
+      <button onclick="checkAnswer(this, 'result2')" data-correct="false">&lt;link&gt;</button>
+      <button onclick="checkAnswer(this, 'result2')" data-correct="false">&lt;js&gt;</button>
+      <p id="result2" class="result"></p>
+    </div>
+
+    <div>
+      <p>3. What does API stand for?</p>
+      <button onclick="checkAnswer(this, 'result3')" data-correct="false">Application Page Interface</button>
+      <button onclick="checkAnswer(this, 'result3')" data-correct="true">Application Programming Interface</button>
+      <button onclick="checkAnswer(this, 'result3')" data-correct="false">Applied Program Interface</button>
+      <p id="result3" class="result"></p>
+    </div>
+  </div>
+
+  <!-- 3. API Fetch Section -->
+  <div class="section">
+    <h2>Get a Random Joke</h2>
+    <button onclick="fetchJoke()">Fetch Joke</button>
+    <p id="joke" style="margin-top: 10px; font-style: italic;"></p>
+  </div>
+
+  <script>
+    // Check answer and give feedback
+    function checkAnswer(button, resultId) {
+      const result = document.getElementById(resultId);
+      if (button.dataset.correct === "true") {
+        result.textContent = "✅ Correct!";
+        result.style.color = "green";
+      } else {
+        result.textContent = "❌ Incorrect!";
+        result.style.color = "red";
+      }
+    }
+
+    // Fetch joke from API
+    function fetchJoke() {
+      const jokePara = document.getElementById("joke");
+      jokePara.textContent = "Loading...";
+
+      fetch("https://official-joke-api.appspot.com/random_joke")
+        .then(res => res.json())
+        .then(data => {
+          jokePara.textContent = `${data.setup} — ${data.punchline}`;
+        })
+        .catch(() => {
+          jokePara.textContent = "Oops! Couldn't load a joke. Try again later.";
+        });
+    }
+  </script>
+</body>
+</html>
