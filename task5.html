@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nandini's Portfolio</title>
+  <style>
+    :root {
+      --primary: #5f72bd;
+      --secondary: #9b23ea;
+      --bg-light: #f4f6fa;
+      --bg-dark: #121212;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 5px solid #ffffff22;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    #toggle-theme {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: white;
+      color: var(--primary);
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #toggle-theme:hover {
+      background: #eee;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .project-card {
+      background: white;
+      margin-bottom: 25px;
+      padding: 20px;
+      border-left: 6px solid var(--primary);
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    footer {
+      background-color: #1e1e1e;
+      color: #ccc;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 60px;
+      font-size: 0.95rem;
+    }
+
+    body.dark .project-card {
+      background: #1e1e1e;
+      color: #f0f0f0;
+      border-left-color: var(--secondary);
+    }
+
+    body.dark #toggle-theme {
+      background-color: #333;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section h2 {
+        font-size: 1.5rem;
+      }
+
+      .project-card {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hi, I'm Nandini Reddy</h1>
+    <p>Web Developer | AI & ML Enthusiast</p>
+    <button id="toggle-theme">Toggle Theme</button>
+  </header>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-card">
+      <strong>🧠 General Health Prediction</strong>
+      Built during my ELEWAYTE internship using data analysis and ML models to predict user health status based on symptoms.
+    </div>
+    <div class="project-card">
+      <strong>📝 Note Taking App</strong>
+      A responsive JavaScript-powered note-taking web app with add, delete, and save features using local storage.
+    </div>
+    <div class="project-card">
+      <strong>🛍️ Product Listing Page</strong>
+      E-commerce style product list with categories, hover effects, and responsive grid — made with pure HTML/CSS/JS.
+    </div>
+  </section>
+
+  <footer>
+    📧 Contact: nandinireddy.dakkatha87@gmail.com &nbsp; | &nbsp; © 2025 Nandini Reddy
+  </footer>
+
+  <script>
+    document.getElementById('toggle-theme').addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
